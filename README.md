@@ -95,6 +95,18 @@
 | 🟥 Phase 4 | Security: Linux, Red Hat, Kali, Wireshark, networking | 🚀 Learning |
 | 🟪 Phase 5 | Build & deploy production tender-management platforms | ✅ Done |
 
+### 🎮 Play My Game
+
+**Tic-Tac-Toe — ACA by Sechaba**
+
+A Tic-Tac-Toe game I developed as part of my software development work — built with React, state management and game logic.
+
+<p align="center">
+  <a href="https://tic-tac-toe-aca-by-sechaba.vercel.app" target="_blank">
+    <img src="https://img.shields.io/badge/%E2%96%B6%20Play%20Tic--Tac--Toe-2ea44f?style=for-the-badge" alt="Play Tic-Tac-Toe"/>
+  </a>
+</p>
+
 ### 🚀 Featured Projects
 
 - [**AeroMail**](https://github.com/hitman1c/AeroMail) — AI-powered email client in Python with smart generation, scheduling, analytics and templates
