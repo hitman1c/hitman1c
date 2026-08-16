@@ -64,6 +64,27 @@
 
 </details>
 
+### 🎓 Botho University — Computing Honours (Software Engineering)
+
+> 📚 Currently studying under industry-leading academics. Building strong foundations in systems, software and security.
+
+| Course | Lecturer |
+| :--- | :--- |
+| C++ Systems | Dr. Lerato Mohapi |
+| Computer Systems & Architecture | Dr. Lerato Mohapi |
+| C# / .NET | Motlatsi Mokhalinyane |
+| Software Engineering | Lisemelo Ntoampe |
+| Advanced Java & JDK | Tumelo Pii |
+| Web & SQL | Likeleli Lekhanya |
+| Data Structures & Algorithms | Kasongo Kibambe |
+| IT Project Management | Mamotlatsi Seotsanyane |
+| Linux Essentials | Rantsieli Elvis Posholi |
+| Discrete Maths | Mr. Motlomelo |
+| Computer Introduction | Jacob Mahlatsi (Expert Lecturer) |
+| Operating Systems & Hardware | Jacob Mahlatsi (Expert Lecturer) |
+| Communication Skills | Pali Nkiwane |
+| Database Management (Oracle) | Lenyora Sesinyi |
+
 ### 🗺️ Roadmap
 
 | Phase | Focus | Status |
