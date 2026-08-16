@@ -1,4 +1,4 @@
-# Hi there, I'm Sechaba Seabata 👋
+                  # Hi there, I'm Sechaba Seabata 👋
 
 <p align="center">
   💻 Software Developer &nbsp;|&nbsp; 🤖 Exploring Agentic Engineering &nbsp;|&nbsp; 🛡️ Cybersecurity Enthusiast
