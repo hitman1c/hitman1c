@@ -118,7 +118,7 @@
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=hitman1c&layout=compact&theme=github_dark&hide_border=true" alt="Top Languages" height="165"/>
 </p>
 <p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=hitman1c&theme=github-dark-blue&hide_border=true" alt="GitHub Streak"/>
+  <img src="https://streak-stats.demolab.com/?user=hitman1c&theme=github-dark-blue&hide_border=true" alt="GitHub Streak"/>
 </p>
 <p align="center">
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=hitman1c&theme=github-dark&bg_color=0d1117&hide_border=true" alt="Contribution Graph"/>
