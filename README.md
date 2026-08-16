@@ -80,8 +80,8 @@
 | IT Project Management | Mamotlatsi Seotsanyane |
 | Linux Essentials | Rantsieli Elvis Posholi |
 | Discrete Maths | Mr. Motlomelo |
-| Computer Introduction | Jacob Mahlatsi (Expert Lecturer) |
-| Operating Systems & Hardware | Jacob Mahlatsi (Expert Lecturer) |
+| Computer Introduction | Jacob Mahlatsi |
+| Operating Systems & Hardware | Jacob Mahlatsi |
 | Communication Skills | Pali Nkiwane |
 | Database Management (Oracle) | Lenyora Sesinyi |
 
