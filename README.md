@@ -72,7 +72,7 @@
 | 🟦 Phase 2 | Web: HTML, CSS, JavaScript, React, TypeScript, Node.js | ✅ Done |
 | 🟨 Phase 3 | Systems: Flask, SocketIO, SQL, Git, GitHub Actions | ✅ In progress |
 | 🟥 Phase 4 | Security: Linux, Red Hat, Kali, Wireshark, networking | 🚀 Learning |
-| 🟪 Phase 5 | Build & deploy production tender-management platforms | 🎯 Next |
+| 🟪 Phase 5 | Build & deploy production tender-management platforms | ✅ Done |
 
 ### 🚀 Featured Projects
 
