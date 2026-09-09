@@ -163,7 +163,7 @@ Building web applications and real-world software systems — with focus on arch
 </p>
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=hitman1c&layout=compact&theme=dark&hide_border=true&bg_color=0D1117&title_color=00FF41&text_color=E6EDF3&icon_color=FF003C" alt="Top Languages" width="400"/>
+  <img src="https://github-readme-stats-fast.vercel.app/api/top-langs?username=hitman1c&layout=compact&theme=dark&hide_border=true&bg_color=0D1117&title_color=00FF41&text_color=E6EDF3&icon_color=FF003C" alt="Top Languages" width="400"/>
 </p>
 
 ---
@@ -613,12 +613,12 @@ Can the organization account for them?
 ## 📊 GITHUB ACTIVITY
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=hitman1c&show_icons=true&theme=dark&hide_border=true&bg_color=0D1117&title_color=00FF41&text_color=E6EDF3&icon_color=FF003C" alt="GitHub Stats" width="400"/>
+  <img src="https://github-readme-stats-fast.vercel.app/api?username=hitman1c&show_icons=true&theme=dark&hide_border=true&bg_color=0D1117&title_color=00FF41&text_color=E6EDF3&icon_color=FF003C" alt="GitHub Stats" width="400"/>
   <img src="https://streak-stats.demolab.com?user=hitman1c&theme=dark&hide_border=true&background=0D1117&ring=00FF41&fire=FF003C&currStreakLabel=00FF41&sideLabels=8B949E" alt="GitHub Streak" width="400"/>
 </p>
 
 <p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=hitman1c&theme=react-dark&hide_border=true&bg_color=0D1117&color=00FF41&line=FF003C&point=E6EDF3&area=true" alt="Contribution Graph" width="90%"/>
+  <img src="https://fabianocouto-activity-graph.vercel.app/graph?username=hitman1c&theme=react-dark&hide_border=true&bg_color=0D1117&color=00FF41&line=FF003C&point=E6EDF3&area=true" alt="Contribution Graph" width="90%"/>
 </p>
 
 ---
@@ -737,17 +737,11 @@ STATUS:     ONLINE
 </p>
 
 <p align="center">
+  <strong>Build → Secure → Automate → Improve → Repeat 🚀</strong>
+</p>
 
 ```
 > SECURITY SESSION TERMINATED
 > CONNECTION CLOSED
 > SHUTDOWN SEQUENCE INITIATED...
-
-BUILD
-SECURE
-AUTOMATE
-IMPROVE
-REPEAT
 ```
-
-</p>
