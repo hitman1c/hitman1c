@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=00FF41&center=true&vCenter=true&width=900&lines=%3E+Initializing+Sechaba.OS...;%3E+Loading+security+protocols...;%3E+Establishing+secure+connection...;%3E+Identity+verified...;%3E+Access+granted...;Software+Engineer;Cybersecurity+Explorer;Ethical+Hacking+Learner;Security+Engineering+Explorer;Agentic+Engineering+Explorer;Building+Secure+Systems" alt="Boot Sequence Typing Animation"/>
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=00FF41&center=true&vCenter=true&width=900&lines=%3E+Initializing+Sechaba.OS...;%3E+Loading+security+protocols...;%3E+Establishing+secure+connection...;%3E+Identity+verified...;%3E+ACCESS+GRANTED;SOFTWARE+ENGINEER;CYBERSECURITY;ETHICAL+HACKING;SECURITY+ENGINEERING;LINUX+%26+NETWORK+SECURITY;AGENTIC+ENGINEERING" alt="Boot Sequence Typing Animation"/>
 </p>
 
 <p align="center">
@@ -37,9 +37,12 @@
 > access granted.
 
 SECHABA SEABATA
-SOFTWARE ENGINEER · CYBERSECURITY EXPLORER · ETHICAL HACKING LEARNER
+SOFTWARE ENGINEER · CYBERSECURITY · ETHICAL HACKING · SECURITY ENGINEERING
 
 Maseru, Lesotho 🇱🇸
+
+Security research and offensive-security activities are conducted within
+authorized, controlled, and educational environments.
 ```
 
 ---
@@ -48,39 +51,47 @@ Maseru, Lesotho 🇱🇸
 ┌──[sechaba@kali]─[~/profile]
 └─$ whoami
 
-sechaba
+SECHABA SEABATA
 
 └─$ id
 
-uid=software-engineer gid=cybersecurity groups=linux,networking,security,agents
+uid=software-engineer gid=security groups=linux,networking,cybersecurity,red-team,agents
 
 └─$ hostname
 
 sechaba-01
 
+└─$ role
+
+Software Engineer
+Cybersecurity
+Ethical Hacking
+Security Engineering
+Linux & Network Security
+Agentic Engineering
+
 └─$ status
 
 [ONLINE]
-[IDENTITY VERIFIED]
+[ACCESS GRANTED]
 [SYSTEMS OPERATIONAL]
 ```
 
 ---
 
 ```text
-╔══════════════════════════════════════════════════════════════╗
-║                    SYSTEM STATUS                            ║
-╠══════════════════════════════════════════════════════════════╣
-║ Software Engineering    [██████████░░░░░░░░]  Exploring     ║
-║ Linux & Systems         [████████░░░░░░░░░░]  Learning      ║
-║ Networking              [██████░░░░░░░░░░░░]  Exploring     ║
-║ Cybersecurity           [██████░░░░░░░░░░░░]  Learning      ║
-║ Ethical Hacking         [████░░░░░░░░░░░░░░]  Learning      ║
-║ Security Engineering    [██████░░░░░░░░░░░░]  Developing    ║
-║ Agentic Engineering     [████████░░░░░░░░░░]  Exploring     ║
-╠══════════════════════════════════════════════════════════════╣
-║ STATUS: ACTIVE                    UPTIME: 00:00:00          ║
-╚══════════════════════════════════════════════════════════════╝
+┌──[sechaba@kali]─[~/operations]
+└─$ systemctl status sechaba
+
+SOFTWARE ENGINEERING       [ ACTIVE ]
+CYBERSECURITY              [ ACTIVE ]
+ETHICAL HACKING            [ ACTIVE ]
+LINUX & NETWORK SECURITY   [ ACTIVE ]
+SECURITY ENGINEERING       [ ACTIVE ]
+AGENTIC ENGINEERING        [ ACTIVE ]
+
+Loaded: loaded (/etc/init.d/sechaba)
+Active: active (running) since 2000-01-01
 ```
 
 ---
@@ -97,21 +108,24 @@ sechaba-01
 
 ---
 
-# 💻 SOFTWARE ENGINEERING // CORE
+# 💻 SOFTWARE ENGINEERING
 
 > Software Engineer Intern at **Africa Code Academy** · Computing Honours — Software Engineering at **Botho University**
 
-I build web applications and real-world software systems. My focus extends beyond writing code — into **architecture, databases, security, infrastructure, automation, and deployment.**
+Building web applications and real-world software systems — with focus on architecture, databases, security, infrastructure, automation, and deployment.
 
 ```text
 ┌────────────────────────────────────────────────────────────┐
-│           CORE ENGINEERING CAPABILITIES                    │
+│                   ENGINEERING CORE                         │
 ├────────────────────────────────────────────────────────────┤
 │                                                            │
-│  Architecture      ·  System Design       ·  APIs          │
-│  Databases         ·  Testing             ·  Git           │
-│  CI/CD             ·  Authentication      ·  Deployment    │
-│  Code Quality      ·  Security            ·  Automation    │
+│  Software Engineering   ·  System Architecture             │
+│  System Design          ·  Backend Engineering             │
+│  Frontend Engineering   ·  Database Engineering            │
+│  API Development        ·  Authentication                  │
+│  Testing                ·  CI/CD                           │
+│  Git                    ·  Deployment                      │
+│  Secure Development                                        │
 │                                                            │
 └────────────────────────────────────────────────────────────┘
 ```
@@ -161,21 +175,19 @@ I build web applications and real-world software systems. My focus extends beyon
 ```
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&pause=1200&color=00FF41&center=true&vCenter=true&width=800&lines=Mapping+Attack+Surface...+%E2%9B%B5;Reconnaissance+in+progress...+%F0%9F%95%B8" alt="Recon Transition"/>
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&pause=1200&color=00FF41&center=true&vCenter=true&width=800&lines=Mapping+Attack+Surface...+%E2%9B%B5;Analyzing+Defense+Posture...+%F0%9F%9B%A1" alt="Recon Transition"/>
 </p>
 
 ---
 
-# 🔗 THE THREAD
+# 🔗 OPERATIONAL THREAD
 
-Software, security, and AI are not separate worlds. They are one path.
+Software, security, and AI operate as one specialization path.
 
 ```text
-SOFTWARE DEVELOPMENT
-        ↓
 SOFTWARE ENGINEERING
         ↓
-ARCHITECTURE & SYSTEMS
+SYSTEMS & ARCHITECTURE
         ↓
 LINUX & NETWORKING
         ↓
@@ -185,37 +197,36 @@ ETHICAL HACKING
         ↓
 SECURITY ENGINEERING
         ↓
-AI-ASSISTED DEVELOPMENT
+AI ENGINEERING
         ↓
 AGENTIC ENGINEERING
 ```
 
-**Build systems → understand how they fail → understand how they are attacked → learn how to secure them → engineer them with AI.**
+**Build systems → understand how they fail → understand how they are attacked → secure them → engineer them with AI.**
 
 ---
 
 # 🛡️ CYBERSECURITY // SECURITY OPERATIONS
 
-Building a security foundation alongside software engineering.
-
 ```text
 ╔══════════════════════════════════════════════════════════════╗
-║        CYBERSECURITY OPERATIONS CENTER                       ║
+║                SECURITY OPERATIONS CENTER                    ║
 ╠══════════════════════════════════════════════════════════════╣
 ║                                                              ║
-║  Ethical Hacking        ·  Penetration Testing (learning)    ║
-║  Web App Security       ·  Network Security                  ║
-║  Linux Security         ·  API Security                      ║
-║  Authentication         ·  Vulnerability Assessment (learn)  ║
-║  Security Testing       ·  Secure Development                ║
-║  Security Automation    ·  CTFs · OSINT                      ║
+║  Cybersecurity          ·  Ethical Hacking                   ║
+║  Offensive Security     ·  Defensive Security                ║
+║  Application Security   ·  Web Security                      ║
+║  Network Security       ·  Linux Security                    ║
+║  API Security           ·  Security Engineering              ║
+║  Security Automation    ·  Threat Analysis                   ║
+║  Vulnerability Assessment                                   ║
 ║                                                              ║
 ╚══════════════════════════════════════════════════════════════╝
 ```
 
 ---
 
-## ⚔️ Offensive Security
+## ⚔️ OFFENSIVE SECURITY
 
 ```text
 RECONNAISSANCE
@@ -228,33 +239,36 @@ VULNERABILITY DISCOVERY
       ↓
 CONTROLLED EXPLOITATION
       ↓
-ANALYSIS
+PRIVILEGE ESCALATION
+      ↓
+POST-EXPLOITATION
       ↓
 REPORTING
 ```
 
 ```text
-┌──[sechaba@kali]─[~/security]
-└─$ ./scan.sh
+┌──[sechaba@kali]─[~/engagement]
+└─$ ./enumerate.sh
 
-[+] Target: authorized lab environment
+[+] Target: authorized engagement
 [+] Scope: confirmed
-[+] Authorization: granted
-[+] Proceeding with testing...
+[+] Authorization: verified
+[+] Proceeding...
 
-> ETHICAL NOTICE: All activity is performed ONLY against
-> authorized systems, personal labs, CTFs, intentionally
-> vulnerable applications, and controlled environments.
+> Security research is conducted within authorized,
+> controlled, and educational environments only.
 ```
 
 ---
 
-## 🛡️ Defensive Security
+## 🛡️ DEFENSIVE SECURITY
 
 ```text
 DETECTION
     ↓
 ANALYSIS
+    ↓
+THREAT IDENTIFICATION
     ↓
 HARDENING
     ↓
@@ -262,16 +276,15 @@ MONITORING
     ↓
 INCIDENT RESPONSE
     ↓
-CONTINUOUS IMPROVEMENT
+IMPROVEMENT
 ```
 
-> Cybersecurity is not only about attacking.
->
-> **Understand attacks + understand systems + build secure software = Security Engineering.**
+> Understand attacks. Understand systems. Build secure software.
+> **That is security engineering.**
 
 ---
 
-## 🧠 Security Mindset // Threat Model
+## 🧠 THREAT MODEL // SECURITY MINDSET
 
 ```text
 ASSETS
@@ -291,56 +304,70 @@ MONITORING
 
 ---
 
-## 🗺️ Cybersecurity Roadmap
+## 🗺️ CYBERSECURITY ROADMAP
 
 ```text
 LINUX
- ↓
+  ↓
 NETWORKING
- ↓
+  ↓
 RECONNAISSANCE
- ↓
+  ↓
 ENUMERATION
- ↓
+  ↓
 WEB SECURITY
- ↓
+  ↓
 VULNERABILITY ANALYSIS
- ↓
+  ↓
 ETHICAL HACKING
- ↓
+  ↓
 DEFENSIVE SECURITY
- ↓
+  ↓
 SECURITY ENGINEERING
 ```
 
-**Current position: Linux → Networking → Reconnaissance → growing toward Web Security.**
-
 ---
 
-## 🌐 Web Security // OWASP
+## 🌐 WEB SECURITY
 
 ```text
-AUTHENTICATION          · AUTHORIZATION        · ACCESS CONTROL
-INJECTION               · XSS                   · CSRF
-SSRF                    · API SECURITY          · SESSION SECURITY
-SECURITY MISCONFIGURATION
+AUTHENTICATION         ·  AUTHORIZATION
+ACCESS CONTROL         ·  INJECTION
+XSS                    ·  CSRF
+SSRF                   ·  API SECURITY
+SESSION SECURITY       ·  SECURITY MISCONFIGURATION
 ```
 
-Exploring application security from the perspective of a builder who wants to ship secure software.
+```text
+APPLICATION
+      ↓
+ATTACK SURFACE
+      ↓
+VULNERABILITY
+      ↓
+EXPLOITATION
+      ↓
+IMPACT
+      ↓
+MITIGATION
+```
 
 ---
 
-### Security Toolkit
+## 🔫 SECURITY ARSENAL
 
 ```text
 [ SYSTEMS ]
-Linux · Kali Linux · Red Hat
+Linux · Kali Linux · Red Hat · Bash
 
 [ NETWORK ]
-Wireshark · Nmap · Netcat
+Nmap · Wireshark · Netcat
 
 [ WEB SECURITY ]
 Burp Suite · OWASP ZAP
+
+[ SECURITY TESTING ]
+Metasploit
 
 [ AUTOMATION ]
 Python · Bash · Git
@@ -355,6 +382,7 @@ Python · Bash · Git
   <img src="https://img.shields.io/badge/Burp%20Suite-FF6633?style=for-the-badge&logo=portswigger&logoColor=white" alt="Burp Suite"/>
   <img src="https://img.shields.io/badge/OWASP%20ZAP-000000?style=for-the-badge&logo=owasp&logoColor=white" alt="OWASP ZAP"/>
   <img src="https://img.shields.io/badge/Netcat-878787?style=for-the-badge&logo=linux&logoColor=white" alt="Netcat"/>
+  <img src="https://img.shields.io/badge/Metasploit-2D2D2D?style=for-the-badge&logo=metasploit&logoColor=FF003C" alt="Metasploit"/>
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
   <img src="https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnubash&logoColor=white" alt="Bash"/>
   <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git"/>
@@ -362,32 +390,33 @@ Python · Bash · Git
 
 ---
 
-## 🧪 Security Labs
+## 🧪 SECURITY LABS
 
 ```text
-Security Labs
-├── 🟢 Linux                     [ IN PROGRESS ]
-├── 🟢 Networking                [ IN PROGRESS ]
-├── 🟡 Web Security              [ LEARNING ]
-├── 🟡 Reconnaissance            [ PLANNED ]
-├── 🟡 Enumeration               [ PLANNED ]
-├── 🔴 Authentication            [ PLANNED ]
-├── 🔴 Cryptography              [ PLANNED ]
-├── 🔴 Forensics                 [ PLANNED ]
-└── 🔴 Security Automation       [ PLANNED ]
+SECURITY LABS
+
+/linux-security
+/network-security
+/web-security
+/reconnaissance
+/enumeration
+/penetration-testing
+/forensics
+/ctf
+/security-automation
 ```
 
-Each lab will document:
+Each lab documents:
 
 ```text
 Objective · Environment · Tools
 Methodology · Findings
-What I Learned · Defensive Measures
+Defensive Measures
 ```
 
 ---
 
-## 🚩 CTF // Capture The Flag
+## 🚩 CTF // CAPTURE THE FLAG
 
 ```text
 ╔══════════════════════════════════════════════════════════════╗
@@ -398,12 +427,10 @@ What I Learned · Defensive Measures
 ║  [ CRYPTO ]    [ FORENSICS ] [ OSINT ]                       ║
 ║  [ REVERSE ENGINEERING ]  [ PRIVILEGE ESCALATION ]           ║
 ║                                                              ║
-║  > No fabricated achievements. Real write-ups only.          ║
-║                                                              ║
 ╚══════════════════════════════════════════════════════════════╝
 ```
 
-When real challenges are solved, entries will be added here:
+Real challenges solved are documented with:
 
 ```text
 Platform · Challenge · Category
@@ -412,16 +439,21 @@ Difficulty · Date · Write-up
 
 ---
 
-## 📋 Security Learning Log
+## 📡 SECURITY RESEARCH
 
 ```text
-[09/2026] Linux Security Fundamentals        [ ACTIVE ]
-[09/2026] Network Analysis                   [ ACTIVE ]
-[09/2026] Web Security / OWASP Foundations   [ LEARNING ]
-[09/2026] Ethical Hacking Fundamentals       [ LEARNING ]
+┌──[sechaba@kali]─[~/research]
+└─$ ls
 
-> This log only documents real learning activity.
+security-writeups/
+vulnerability-analyses/
+lab-findings/
+technical-notes/
+security-experiments/
+defensive-recommendations/
 ```
+
+Write-ups, vulnerability analyses, lab findings, and technical notes — documenting the work in an active technical security portfolio.
 
 ---
 
@@ -437,9 +469,25 @@ Difficulty · Date · Write-up
 
 ---
 
-# 🤖 AGENTIC ENGINEERING // AI SYSTEMS
+# 🤖 AGENTIC ENGINEERING
 
-Moving from **vibe coding** toward disciplined **agentic engineering**.
+```text
+HUMAN
+ ↓
+CONTEXT
+ ↓
+AGENT
+ ↓
+TOOLS
+ ↓
+EXECUTION
+ ↓
+TESTING
+ ↓
+REVIEW
+ ↓
+IMPROVEMENT
+```
 
 ```text
 VIBE CODING
@@ -453,44 +501,22 @@ AI PARTICIPATES IN ENGINEERING
 AGENTIC ENGINEERING
 ```
 
-```text
-┌────────────────────────────────────────────────────────────┐
-│                                                            │
-│        HUMAN                                               │
-│          ↓                                                 │
-│        CONTEXT                                             │
-│          ↓                                                 │
-│        AGENT                                               │
-│          ↓                                                 │
-│        TOOLS                                               │
-│          ↓                                                 │
-│        EXECUTION                                           │
-│          ↓                                                 │
-│        TESTING                                             │
-│          ↓                                                 │
-│        REVIEW                                              │
-│          ↓                                                 │
-│        IMPROVEMENT                                         │
-│                                                            │
-└────────────────────────────────────────────────────────────┘
-```
+Integrating AI systems into serious engineering workflows — tools, context, memory, MCP, and structured development processes.
 
 > **AI generates code → AI participates in an engineering workflow.**
 
-### Exploring
-
 <p align="center">
-  <img src="https://img.shields.io/badge/AI%20Coding%20Agents-Exploring-8B5CF6?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Agent%20Skills-Exploring-8B5CF6?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/MCP-Exploring-8B5CF6?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Agent%20Memory-Exploring-8B5CF6?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/AI%20Coding%20Agents-ACTIVE-8B5CF6?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Agent%20Skills-ACTIVE-8B5CF6?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/MCP-ACTIVE-8B5CF6?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Agent%20Memory-ACTIVE-8B5CF6?style=for-the-badge" />
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Context%20Engineering-Exploring-8B5CF6?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Multi--Agent%20Systems-Exploring-8B5CF6?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Knowledge%20Graphs-Exploring-8B5CF6?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Spec--Driven%20Development-Exploring-8B5CF6?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Context%20Engineering-ACTIVE-8B5CF6?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Multi--Agent%20Systems-ACTIVE-8B5CF6?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Knowledge%20Graphs-ACTIVE-8B5CF6?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Spec--Driven%20Development-ACTIVE-8B5CF6?style=for-the-badge" />
 </p>
 
 ---
@@ -503,23 +529,7 @@ AGENTIC ENGINEERING
 
 ---
 
-# 🏗️ MISSIONS // REAL-WORLD SOFTWARE
-
-```text
-╔══════════════════════════════════════════════════════════════╗
-║                  CURRENT OPERATIONS                          ║
-╠══════════════════════════════════════════════════════════════╣
-║                                                              ║
-║  [ACTIVE] Software Architecture                              ║
-║  [ACTIVE] Cybersecurity                                      ║
-║  [ACTIVE] Linux                                              ║
-║  [ACTIVE] Networking                                         ║
-║  [ACTIVE] Ethical Hacking                                    ║
-║  [ACTIVE] Security Engineering                               ║
-║  [ACTIVE] Agentic Engineering                                ║
-║                                                              ║
-╚══════════════════════════════════════════════════════════════╝
-```
+# 🏗️ MISSIONS // ENGINEERED SYSTEMS
 
 ---
 
@@ -528,17 +538,19 @@ AGENTIC ENGINEERING
 │  MISSION // 001                                             │
 │  DEVICE MANAGEMENT · SECHABA LAPTOP TRACKER                │
 ├─────────────────────────────────────────────────────────────┤
-│  Objective    Track organizational devices                 │
-│               and accountability.                          │
+│  OBJECTIVE   Track organizational devices and              │
+│              accountability.                               │
 │                                                             │
-│  Problem      Organizations lose visibility of who          │
-│               is responsible for which device.             │
+│  PROBLEM     Organizations lose visibility of who is        │
+│              responsible for which device.                 │
 │                                                             │
-│  Solution     Platform answering real device questions.     │
+│  SOLUTION    Platform answering real device questions.      │
 │                                                             │
-│  Stack        React / TypeScript / Database                 │
+│  ENGINEERING React / TypeScript / Database                  │
 │                                                             │
-│  Status       [ COMPLETED ]                                 │
+│  SECURITY    Authentication · Access Control                │
+│                                                             │
+│  STATUS      [ COMPLETED ]                                  │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -559,19 +571,19 @@ Can the organization account for them?
 │  MISSION // 002                                             │
 │  TENDER & PROCUREMENT                                       │
 ├─────────────────────────────────────────────────────────────┤
-│  Objective    Manage procurement workflows.                 │
+│  OBJECTIVE   Manage procurement workflows.                  │
 │                                                             │
-│  Problem      Complex tender processes needing              │
-│               structure and tracking.                       │
+│  PROBLEM     Complex tender processes need structure        │
+│              and tracking.                                  │
 │                                                             │
-│  Solution     System with business logic over               │
-│               real procurement workflows.                   │
+│  SOLUTION    System with real business logic over           │
+│              procurement operations.                        │
 │                                                             │
-│  Components   Business processes · User management          │
-│               Authentication · APIs · Dashboards            │
-│               Databases · Business logic                    │
+│  ENGINEERING Business processes · User management           │
+│              Authentication · APIs · Dashboards             │
+│              Databases · Business logic                     │
 │                                                             │
-│  Status       [ COMPLETED ]                                 │
+│  STATUS      [ COMPLETED ]                                  │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -582,11 +594,11 @@ Can the organization account for them?
 │  MISSION // 003                                             │
 │  TIC-TAC-TOE — ACA BY SECHABA                               │
 ├─────────────────────────────────────────────────────────────┤
-│  Objective    Build an interactive game.                    │
+│  OBJECTIVE   Build an interactive game.                     │
 │                                                             │
-│  Stack        Web Technologies                              │
+│  ENGINEERING Web Technologies                               │
 │                                                             │
-│  Status       [ COMPLETED ]                                 │
+│  STATUS      [ COMPLETED ]                                  │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -598,7 +610,7 @@ Can the organization account for them?
 
 ---
 
-## 📊 GitHub Activity
+## 📊 GITHUB ACTIVITY
 
 <p align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=hitman1c&show_icons=true&theme=dark&hide_border=true&bg_color=0D1117&title_color=00FF41&text_color=E6EDF3&icon_color=FF003C" alt="GitHub Stats" width="400"/>
@@ -638,10 +650,10 @@ Can the organization account for them?
 
 ---
 
-## 🌱 Currently Learning
+## 🧰 ACTIVE MODULES
 
 ```text
-┌──[sechaba@kali]─[~/learning]
+┌──[sechaba@kali]─[~/modules]
 └─$ cat active_modules.txt
 
 Software Architecture
@@ -658,35 +670,31 @@ Ethical Hacking
 
 ---
 
-# 🗺️ JOURNEY
+# 🗺️ PROFESSIONAL EVOLUTION
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=18&pause=1200&color=00FF41&center=true&vCenter=true&width=800&lines=CODE+%E2%86%92;SOFTWARE+%E2%86%92;SYSTEMS+%E2%86%92;LINUX+%E2%86%92;NETWORKING+%E2%86%92;SECURITY+%E2%86%92;ETHICAL+HACKING+%E2%86%92;SECURITY+ENGINEERING+%E2%86%92;AI-ASSISTED+ENGINEERING+%E2%86%92;AGENTIC+ENGINEERING+%F0%9F%9A%80" alt="Journey Animation"/>
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=18&pause=1200&color=00FF41&center=true&vCenter=true&width=800&lines=SOFTWARE+DEVELOPMENT+%E2%86%92;SOFTWARE+ENGINEERING+%E2%86%92;SYSTEM+ARCHITECTURE+%E2%86%92;CYBERSECURITY+%E2%86%92;ETHICAL+HACKING+%E2%86%92;SECURITY+ENGINEERING+%E2%86%92;AI+ENGINEERING+%E2%86%92;AGENTIC+ENGINEERING+%F0%9F%9A%80" alt="Professional Evolution Animation"/>
 </p>
 
 ```text
-CODE
- ↓
-SOFTWARE
- ↓
-SYSTEMS
- ↓
-LINUX
- ↓
-NETWORKING
- ↓
-SECURITY
- ↓
+SOFTWARE DEVELOPMENT
+        ↓
+SOFTWARE ENGINEERING
+        ↓
+SYSTEM ARCHITECTURE
+        ↓
+CYBERSECURITY
+        ↓
 ETHICAL HACKING
- ↓
+        ↓
 SECURITY ENGINEERING
- ↓
-AI-ASSISTED ENGINEERING
- ↓
+        ↓
+AI ENGINEERING
+        ↓
 AGENTIC ENGINEERING
 ```
 
-Continuously expanding skills rather than staying inside one technology or one area of software.
+Building, securing, and automating — continuously expanding across the full engineering spectrum.
 
 ---
 
@@ -698,7 +706,7 @@ Continuously expanding skills rather than staying inside one technology or one a
 
 ---
 
-# 📬 CONNECT
+# 📡 CONNECT
 
 ```text
 ┌──[sechaba@kali]─[~/contact]
@@ -731,11 +739,15 @@ STATUS:     ONLINE
 <p align="center">
 
 ```
-> SECURITY SESSION CLOSED
-> CONNECTION TERMINATED
-> SHUTDOWN SEQUENCE COMPLETE
+> SECURITY SESSION TERMINATED
+> CONNECTION CLOSED
+> SHUTDOWN SEQUENCE INITIATED...
 
-Build → Secure → Automate → Improve → Repeat 🚀
+BUILD
+SECURE
+AUTOMATE
+IMPROVE
+REPEAT
 ```
 
 </p>
