@@ -63,6 +63,35 @@ GLOW = {"g": GREEN, "c": CYAN, "p": PINK, "v": PURPLE, "m": MUTED}
 GLOW_KEY = {GREEN: "g", CYAN: "c", PINK: "p", PURPLE: "v",
             "#FFB800": "m", MUTED: "m"}
 
+# Theme-adaptive rendering. Panels are drawn with the dark palette as their
+# presentation attributes, plus a <style> block that overrides those colours
+# via CSS variables when the viewer's page prefers a light scheme
+# (@media (prefers-color-scheme: light)). This is the part of SMIL -- and
+# CSS -- that GitHub allows inside an <img>: it resolves against the
+# embedding page's theme, so the same file renders correctly on both.
+TCOL = {BG: "--bg", PANEL: "--panel", PANEL2: "--panel2",
+        GREEN: "--grn", CYAN: "--cyn", PINK: "--pnk", PURPLE: "--pur",
+        TEXT: "--txt", MUTED: "--mut",
+        "#FFB800": "--amb", "#04161A": "--pill"}
+LIGHT = {"--bg": "#FFFFFF", "--panel": "#F6F8FA", "--panel2": "#EAF0F3",
+         "--grn": "#0A7A35", "--cyn": "#0B6F8D", "--pnk": "#C01352",
+         "--pur": "#7733CC", "--txt": "#1F2328", "--mut": "#59636E",
+         "--amb": "#B7791F", "--pill": "#E4EEF1"}
+
+
+def col(v):
+    """Map a palette colour to a theme CSS variable (others pass through)."""
+    t = TCOL.get(v)
+    return ("var(%s)" % t) if t else v
+
+
+def theme_style():
+    """Inline stylesheet: dark defaults on :root, light overrides."""
+    root = "".join("%s:%s;" % (v, k) for k, v in TCOL.items())
+    light = "".join("%s:%s;" % (v, c) for v, c in LIGHT.items())
+    return ("<style>:root{%s}@media (prefers-color-scheme: light)"
+            "{:root{%s}}</style>" % (root, light))
+
 BRAND = {
     "Java": "#ED8B00", "Python": "#3776AB", "JavaScript": "#F7DF1E",
     "TypeScript": "#3178C6", "C#": "#239120", "C++": "#00599C",
@@ -169,10 +198,10 @@ class Canvas:
     def rect(self, x, y, w, h, rx=6, fill="none", stroke=None, sw=1,
              op=1, sop=1, glow=None):
         a = ('<rect x="%s" y="%s" width="%s" height="%s" rx="%s" fill="%s"'
-             % (x, y, w, h, rx, fill))
+             % (x, y, w, h, rx, col(fill)))
         if stroke:
             a += ' stroke="%s" stroke-width="%s" stroke-opacity="%s"' % (
-                stroke, sw, sop)
+                col(stroke), sw, sop)
         if op != 1:
             a += ' opacity="%s"' % op
         if glow:
@@ -183,7 +212,7 @@ class Canvas:
     def text(self, x, y, s, size=10, fill=TEXT, anchor="start", weight=None,
              ls=None, op=1, glow=None):
         a = ('<text x="%s" y="%s" font-size="%s" fill="%s" text-anchor="%s"'
-             ' xml:space="preserve"' % (x, y, size, fill, anchor))
+             ' xml:space="preserve"' % (x, y, size, col(fill), anchor))
         if weight:
             a += ' font-weight="%s"' % weight
         if ls:
@@ -208,16 +237,16 @@ class Canvas:
         sop = op if sop is None else sop
         self.e.append('<line x1="%s" y1="%s" x2="%s" y2="%s" stroke="%s" '
                       'stroke-width="%s" stroke-opacity="%s"/>'
-                      % (x1, y1, x2, y2, stroke, sw, sop))
+                      % (x1, y1, x2, y2, col(stroke), sw, sop))
         self._bump(max(x1, x2), max(y1, y2))
 
     def path(self, d, fill="none", stroke=None, sw=1, sop=1, op=1,
              glow=None, cap="round", join="round"):
-        a = '<path d="%s" fill="%s"' % (d, fill)
+        a = '<path d="%s" fill="%s"' % (d, col(fill))
         if stroke:
             a += (' stroke="%s" stroke-width="%s" stroke-opacity="%s" '
                   'stroke-linecap="%s" stroke-linejoin="%s"'
-                  % (stroke, sw, sop, cap, join))
+                  % (col(stroke), sw, sop, cap, join))
         if op != 1:
             a += ' opacity="%s"' % op
         if glow:
@@ -226,7 +255,7 @@ class Canvas:
         self._bump(*path_bbox(d))
 
     def dot(self, cx, cy, r, fill, op=1, glow=None):
-        a = '<circle cx="%s" cy="%s" r="%s" fill="%s"' % (cx, cy, r, fill)
+        a = '<circle cx="%s" cy="%s" r="%s" fill="%s"' % (cx, cy, r, col(fill))
         if op != 1:
             a += ' opacity="%s"' % op
         if glow:
@@ -234,11 +263,76 @@ class Canvas:
         self.e.append(a + "/>")
         self._bump(cx + r, cy + r)
 
+    # -- animation (SMIL) ---------------------------------------------------
+    # SMIL <animate> runs inside an <img> SVG, where <script> and external
+    # fetches are blocked. All effects here are opacity / transform based, so
+    # they are compositor-friendly and never re-rasterise a path.
+
+    def _reattach(self, a):
+        """Turn the last element into `<el>..anim..</el>`.
+
+        Handles both self-closing primitives (`<rect .../>`) and text
+        elements (`<text ...>..</text>`).
+        """
+        base = self.e[-1]
+        tag = base[1:base.index(" ")]
+        if base.endswith("/>"):
+            self.e[-1] = base[:-2] + ">" + a + "/></" + tag + ">"
+        else:
+            close = "</" + tag + ">"
+            assert base.endswith(close)
+            self.e[-1] = base[:-len(close)] + a + "/>" + close
+
+    def animate(self, attr, values, dur, keyTimes=None, begin=None,
+                repeat="indefinite", fill=None):
+        a = '<animate attributeName="%s" values="%s" dur="%s"' % (
+            attr, values, dur)
+        if keyTimes:
+            a += ' keyTimes="%s"' % keyTimes
+        if begin:
+            a += ' begin="%s"' % begin
+        a += ' repeatCount="%s"' % repeat
+        if fill:
+            a += ' fill="%s"' % fill
+        self._reattach(a)
+
+    def blink(self):
+        """Hard on/off blink for orbs and cursors already baseline-visible."""
+        self.animate("opacity", "1;1;0;0", "1.1s", keyTimes="0;0.45;0.55;1")
+
+    def pulse(self, lo=0.55, hi=1.0, dur="2.4s", begin=None):
+        """Soft breathe for status LEDs / badges."""
+        self.animate("opacity", "%s;%s;%s" % (lo, hi, lo), dur, begin=begin)
+
+    def reveal(self, at, dur="0.25s"):
+        """Reveal the most recently drawn (opacity-0) element once, later."""
+        self.animate("opacity", "0;1", dur, begin="%ss" % at,
+                     repeat="1", fill="freeze")
+
+    def cursor(self, x, bl, h=9, w=4.5, col=GREEN, off=0.0):
+        """Blinking block insertion cursor sitting on text baseline `bl`."""
+        self.rect(x, bl - h + 1, w, h, rx=1, fill=col, op=0)
+        t = off + 1.6
+        kt = ("0;%s;%s;%s;%s;1" % (
+            round(off / t, 3), round((off + 0.05) / t, 3),
+            round((off + 0.8) / t, 3), round((off + 0.9) / t, 3)))
+        self.animate("opacity", "0;0;1;1;0;0", "%ss" % round(t, 2),
+                     keyTimes=kt)
+
+    def slide(self, values, dur="6.5s", begin=None):
+        """Animate the last element's translation through `values`."""
+        a = ('<animateTransform attributeName="transform" type="translate" '
+             'values="%s" dur="%s"' % (values, dur))
+        if begin:
+            a += ' begin="%s"' % begin
+        a += ' repeatCount="indefinite"/>'
+        self._reattach(a)
+
     # -- output ------------------------------------------------------------
 
     def render(self):
-        defs = ['<defs>']
-        for k, col in GLOW.items():
+        defs = ['<defs>', theme_style()]
+        for k, gcol in GLOW.items():
             defs.append(
                 '<filter id="g%s" x="-60%%" y="-60%%" width="220%%" '
                 'height="220%%"><feGaussianBlur stdDeviation="2.2" '
@@ -248,19 +342,19 @@ class Canvas:
             '<linearGradient id="wg" x1="0" y1="0" x2="1" y2="0">'
             '<stop offset="0" stop-color="%s"/><stop offset="0.55" '
             'stop-color="%s"/><stop offset="1" stop-color="%s"/>'
-            '</linearGradient>' % (GREEN, CYAN, PINK))
+            '</linearGradient>' % (col(GREEN), col(CYAN), col(PINK)))
         defs.append(
             '<linearGradient id="wfill" x1="0" y1="0" x2="0" y2="1">'
             '<stop offset="0" stop-color="%s" stop-opacity="0.30"/>'
             '<stop offset="1" stop-color="%s" stop-opacity="0.02"/>'
-            '</linearGradient>' % (GREEN, PINK))
+            '</linearGradient>' % (col(GREEN), col(PINK)))
         defs.append("</defs>")
         return ('<svg xmlns="http://www.w3.org/2000/svg" width="%s" '
                 'height="%s" viewBox="0 0 %s %s" role="img">%s'
                 '<title>%s</title>'
                 '<rect width="%s" height="%s" fill="%s"/>%s</svg>'
                 % (self.w, self.h, self.w, self.h, "".join(defs),
-                   esc(self.title), self.w, self.h, self.bg,
+                   esc(self.title), self.w, self.h, col(self.bg),
                    "".join(self.e)))
 
 
@@ -505,23 +599,32 @@ def a_hero_boot(h=None):
     h = h or 196
     c = Canvas(212, h, title="SECHABA.OS boot sequence log")
     y = 16
+    at = 0.0
     for line in ("Initializing Sechaba.OS...",
                  "Loading security protocols...",
                  "Establishing secure connection...",
                  "Identity verified..."):
         c.text(12, y, ">", 9, GREEN, weight="700")
-        c.text(24, y, line, 9, GREEN)
+        c.text(24, y, line, 9, GREEN, op=0)
+        c.reveal(at)
         y += 14
+        at += 0.35
     c.text(12, y, "ACCESS GRANTED", 10, GREEN, weight="700", ls=1.2,
-           glow="g")
+           glow="g", op=0)
+    c.reveal(at)
     y += 24
     c.line(12, y - 12, 200, y - 12, GREEN, 1, 0.28)
+    at += 0.45
     for r in ("SOFTWARE ENGINEER", "CYBERSECURITY", "ETHICAL HACKING",
               "SECURITY ENGINEERING", "LINUX & NETWORK SECURITY",
               "AGENTIC ENGINEERING"):
         c.text(12, y, ">", 9, CYAN, weight="700")
-        c.text(24, y, r, 9, CYAN)
+        c.text(24, y, r, 9, CYAN, op=0)
+        c.reveal(at)
         y += 14
+        at += 0.22
+    c.cursor(24 + tw("AGENTIC ENGINEERING", 9) + 2, y - 14, h=8, w=4,
+             off=at)
     c.rect(12, y + 4, 26, 5, rx=2, fill=GREEN, op=0.8, glow="g")
     c.text(44, y + 10, "booting", 8, MUTED)
     return c
@@ -566,20 +669,26 @@ def a_hero_profile(h=None):
              ("role", "Software Engineer \u00B7 Cybersecurity", TEXT, 8, False),
              (None, "Ethical Hacking \u00B7 Security Eng.", TEXT, 8, False),
              (None, "Linux & Network Security \u00B7 Agents", TEXT, 8, False)]
-    for cmd, out, col, sz, big in steps:
+    reveal_at = [0.2, 0.6, 0.9, 1.2, 1.45, 1.8, 2.1, 2.4, 2.7]
+    for k, (cmd, out, col, sz, big) in enumerate(steps):
         if cmd:
             y += 3
             prompt(c, pad, y, cmd, 8.5)
             y += 13
         c.text(pad, y, out, sz, col, weight="600" if big else None,
-               ls=0.8 if big else None, glow="c" if big else None)
+               ls=0.8 if big else None, glow="c" if big else None, op=0)
+        c.reveal(reveal_at[k])
         y += 8
     y += 2
     prompt(c, pad, y, "status", 8.5)
     y += 14
-    for s in ("[ONLINE]", "[ACCESS GRANTED]", "[SYSTEMS OPERATIONAL]"):
+    for i, s in enumerate(("[ONLINE]", "[ACCESS GRANTED]",
+                           "[SYSTEMS OPERATIONAL]")):
         c.text(pad, y, s, 9, GREEN, weight="700", glow="g")
+        c.pulse(0.55, 1.0, "2.2s", begin="%ss" % (3.0 + i * 0.35))
         y += 13
+    c.cursor(pad + tw("[SYSTEMS OPERATIONAL]", 9) + 2, y - 13, h=8, w=4,
+             off=3.6)
     return c
 
 
@@ -594,6 +703,7 @@ def a_wave_top(h=None):
            sop=0.7, glow="p")
     c.path(wave_path(-4, W + 4, base - 6, 7, 250, 4.0), stroke=CYAN, sw=1,
            sop=0.45)
+    c.slide("0 0; 10 0; 0 0", dur="8s")
     return c
 
 
@@ -608,6 +718,9 @@ def a_wave_bottom(h=None):
            sop=0.8, glow="p")
     c.path(wave_path(-4, W + 4, base - 10, 12, 300, 5.2), stroke=CYAN, sw=1.2,
            sop=0.5)
+    c.path(wave_path(-4, W + 4, base + 16, 10, 280, 6.1), stroke=PINK, sw=1,
+           sop=0.35)
+    c.slide("0 0; -12 0; 0 0", dur="9s")
     return c
 
 
@@ -616,6 +729,7 @@ def a_identity(h=None):
     c = Canvas(SIXTY, h, title="Identity and secure connection panel")
     y = panel(c, 0, 0, SIXTY, h, CYAN, "IDENTITY / SECURE CONNECTION", "c")
     dragon(c, 26, y + 14, 100)
+    c.pulse(0.3, 1.0, "3.4s")
     tx = 146
     c.text(tx, y + 8, "KALI", 9, GREEN, ls=2.4, weight="700")
     c.text(tx, y + 22, "DRAGON", 9, GREEN, ls=2.4, weight="700", op=0.8)
@@ -627,6 +741,9 @@ def a_identity(h=None):
         c.text(tx, ty, ">", 9, GREEN, weight="700")
         c.text(tx + 12, ty, line, 9.5, GREEN if granted else TEXT,
                weight="600" if granted else None, glow="g" if granted else None)
+        if granted:
+            c.pulse(0.7, 1.0, "2.8s")
+            c.cursor(tx + 12 + tw("access granted.", 9.5) + 2, ty, h=8, w=4)
         ty += 15
 
     ty += 6
@@ -654,20 +771,23 @@ def a_system_status(h=None):
     h = h or 200
     c = Canvas(FORTY, h, title="systemctl status sechaba")
     y = terminal(c, 0, 0, FORTY, h, GREEN, "sechaba@kali:~/operations", "g")
-    prompt(c, 14, y, "systemctl status sechaba", 9.5)
+    ex = prompt(c, 14, y, "systemctl status sechaba", 9.5)
+    c.cursor(ex, y, h=8, w=4, off=0.5)
     y += 16
-    for s in ("SOFTWARE ENGINEERING", "CYBERSECURITY", "ETHICAL HACKING",
-              "LINUX & NETWORK SECURITY", "SECURITY ENGINEERING",
-              "AGENTIC ENGINEERING"):
+    for i, s in enumerate(("SOFTWARE ENGINEERING", "CYBERSECURITY",
+                           "ETHICAL HACKING", "LINUX & NETWORK SECURITY",
+                           "SECURITY ENGINEERING", "AGENTIC ENGINEERING")):
         c.text(14, y, s, 9, TEXT)
         c.text(FORTY - 14, y, "[ ACTIVE ]", 9, GREEN, anchor="end",
                weight="700", glow="g")
+        c.pulse(0.6, 1.0, "2.2s", begin="%ss" % (0.8 + i * 0.3))
         y += 15
     y += 5
     c.line(14, y - 9, FORTY - 14, y - 9, GREEN, 1, 0.3)
     c.text(14, y + 5, "Loaded: loaded (/etc/init.d/sechaba)", 8.5, MUTED)
     c.text(14, y + 18, "Active: active (running)", 8.5, GREEN, weight="600")
     c.dot(FORTY - 20, y + 14, 3.4, GREEN, 1, "g")
+    c.pulse(0.5, 1.0, "2.4s", begin="1.4s")
     return c
 
 
@@ -794,6 +914,9 @@ def a_offensive(h=None):
               "Authorization: verified", "Proceeding..."):
         c.text(14, y, "[+]", 8, GREEN, weight="700")
         c.text(34, y, s, 8, TEXT)
+        if s == "Proceeding...":
+            c.pulse(0.55, 1.0, "2.0s", begin="1.2s")
+            c.cursor(34 + tw(s, 8) + 1, y, h=7, w=3.5, off=1.6)
         y += 12
     return c
 
@@ -893,7 +1016,8 @@ def a_labs(h=None):
     h = h or 220
     c = Canvas(328, h, title="Security labs directory tree")
     y = terminal(c, 0, 0, 328, h, GREEN, "sechaba@kali:~/security-labs", "g")
-    prompt(c, 14, y, "tree", 9.5)
+    ex = prompt(c, 14, y, "tree", 9.5)
+    c.cursor(ex, y, h=8, w=4, off=0.4)
     y += 16
     labs = ["/linux-security", "/network-security", "/web-security",
             "/reconnaissance", "/enumeration", "/penetration-testing",
@@ -915,7 +1039,8 @@ def a_research(h=None):
     h = h or 220
     c = Canvas(328, h, title="Security research directory")
     y = terminal(c, 0, 0, 328, h, CYAN, "sechaba@kali:~/research", "c")
-    prompt(c, 14, y, "ls", 9.5)
+    ex = prompt(c, 14, y, "ls", 9.5)
+    c.cursor(ex, y, h=8, w=4, off=0.4)
     y += 16
     dirs = ["security-writeups/", "vulnerability-analyses/", "lab-findings/",
             "technical-notes/", "security-experiments/",
@@ -1042,6 +1167,7 @@ def a_missions(h=None):
                stroke=GREEN, sw=1, sop=0.7)
         c.text(x + 14 + pw / 2, top + ch - 16, "[ COMPLETED ]", 8, GREEN,
                anchor="middle", weight="700")
+        c.pulse(0.65, 1.0, "2.6s", begin="%ss" % (0.8 + i * 0.6))
 
     sy = top + ch + 16
     sh = 66
@@ -1111,7 +1237,8 @@ def a_contact(h=None):
     h = h or 200
     c = Canvas(FORTY, h, title="Contact and connect terminal")
     y = terminal(c, 0, 0, FORTY, h, GREEN, "sechaba@kali:~/contact", "g")
-    prompt(c, 14, y, "./connect.sh", 9.5)
+    ex = prompt(c, 14, y, "./connect.sh", 9.5)
+    c.cursor(ex, y, h=8, w=4, off=0.4)
     y += 16
     for line, col in (("Initiating secure connection...", TEXT),
                       ("Encrypting channel...", TEXT),
@@ -1119,19 +1246,23 @@ def a_contact(h=None):
         c.text(14, y, ">", 8.5, GREEN, weight="700")
         c.text(26, y, line, 8.5, col, weight="600" if col == GREEN else None,
                glow="g" if col == GREEN else None)
+        if col == GREEN:
+            c.pulse(0.7, 1.0, "2.6s")
         y += 13
     y += 5
     c.line(14, y - 8, FORTY - 14, y - 8, GREEN, 1, 0.25)
     for lbl, a, b, col in (("PORTFOLIO", "sechabaseabataportfolio", ".netlify.app",
                             CYAN),
-                           ("EMAIL", "seabatasechaba0", "@gmail.com", GREEN)):
+                           ("EMAIL", "sebatasechaba0", "@gmail.com", GREEN)):
         c.text(14, y, lbl, 8, MUTED, ls=0.6)
         c.text(92, y, a, 8.5, col)
         c.text(92 + tw(a, 8.5), y, b, 8.5, MUTED)
         y += 15
     c.text(14, y, "STATUS", 8, MUTED, ls=0.6)
     c.dot(84, y - 3, 3.4, GREEN, 1, "g")
-    c.text(94, y, "ONLINE", 8.5, GREEN, weight="700")
+    c.pulse(0.5, 1.0, "2.4s", begin="1.0s")
+    c.text(94, y, "ONLINE", 8.5, GREEN, weight="700", op=0)
+    c.reveal(1.6)
     c.text(14, y + 17, "Buttons below are live links.", 7.5, MUTED)
     return c
 
@@ -1154,6 +1285,8 @@ def a_footer(h=None):
                            "> CONNECTION CLOSED",
                            "> SHUTDOWN SEQUENCE INITIATED...")):
         c.text(sx + 14, 64 + i * 12, l, 8.5, GREEN, weight="600")
+    c.cursor(sx + 14 + tw("> SHUTDOWN SEQUENCE INITIATED...", 8.5) + 2,
+             64 + 2 * 12, h=8, w=4, off=1.4)
     return c
 
 
@@ -1162,10 +1295,15 @@ def _a_protocol(label, accent, note=None, h=None):
     c = Canvas(W, h, title="Protocol divider: %s" % label)
     c.rect(0, 0, W, h, rx=7, fill=PANEL, stroke=accent, sw=1, sop=0.45)
     c.rect(0, 0, 4, h, rx=2, fill=accent, op=0.9, glow=GLOW_KEY[accent])
-    c.text(18, 22 if note else h / 2 + 4, ">> %s <<" % label, 12, accent,
+    label_y = 22 if note else h / 2 + 4
+    c.text(18, label_y, ">> %s <<" % label, 12, accent,
            weight="700", ls=1.4)
+    c.cursor(18 + tw(">> %s <<" % label, 12, 1.4) + 2, label_y, h=10, w=5,
+             off=0.5)
     if note:
         c.text(18, 36, note, 8.5, MUTED)
+    c.rect(0, 9, 4, h - 18, fill=accent, op=0.35)
+    c.slide("0 0; %s 0" % (W + 8), dur="6s")
     return c
 
 
