@@ -4,7 +4,7 @@
 
 **SECHABA SEABATA** — Software Engineer · Cybersecurity · Ethical Hacking · Security Engineering · Linux & Network Security · Agentic Engineering
 
-Maseru, Lesotho 🇱🇸 — building web applications, real-world software systems, and automating engineering workflows with AI.
+Maseru, Lesotho 🇱🇸 — building web applications, real-world software systems, and automating engineering workflows.
 
 [ Portfolio ](https://sechabaseabataportfolio.netlify.app) · [ Email ](mailto:seabatasechaba0@gmail.com) · [ Profile ](https://github.com/hitman1c)
 
